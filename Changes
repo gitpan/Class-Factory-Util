@@ -1,0 +1,6 @@
+Revision history for Perl extension Class::Util.
+
+0.01  Sun Oct 28 13:39:16 2001
+	- original version; created by h2xs 1.1.1.4 with options
+		-A -X -n Class::Util
+

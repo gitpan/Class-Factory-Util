@@ -1,3 +1,12 @@
+1.5  2003-07-30
+
+- Fix a mistake in the documentation's SYNOPSIS.  Reported by Jay
+Bonci.
+
+- Added COPYRIGHT and SUPPORT sections to the docs, as well as a
+LICENSE file to the distro.  Thanks to Jay Bonci for reminding me that
+actually including a license is a good idea ;)
+
 1.4  2003-02-21
 
 - Add subclasses() function for backwards compatibility.  But it's

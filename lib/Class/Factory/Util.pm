@@ -5,7 +5,7 @@ use vars qw($VERSION);
 
 use Carp qw(confess);
 
-$VERSION = '1.4';
+$VERSION = '1.5';
 
 1;
 
@@ -53,13 +53,13 @@ Class::Factory::Util - Provide utility methods for factory classes
 
   package My::Class;
 
-  use Class::Util;
+  use Class::Factory::Util;
 
   My::Class->subclasses;
 
 =head1 DESCRIPTION
 
-This module contains methods that are useful for factory classes.
+This module exports a method that is useful for factory classes.
 
 =head1 USAGE
 
@@ -73,11 +73,26 @@ So if you have the modules "Foo::Base", "Foo::Base::Bar", and
 "Foo::Base::Baz", then the return value of C<< Foo::Base->subclasses()
 >> would be "Bar" and "Baz".
 
+=head1 SUPPORT
+
+Please submit bugs to the CPAN RT system at
+http://rt.cpan.org/NoAuth/ReportBug.html?Queue=class-factory-util or
+via email at bug-class-factory-util@rt.cpan.org.
+
 =head1 AUTHOR
 
 Dave Rolsky, <autarch@urth.org>.
 
 Removed from Alzabo and packaged by Terrence Brannon,
 <tbone@cpan.org>.
+
+=head1 COPYRIGHT
+
+Copyright (c) 2003 David Rolsky.  All rights reserved.  This program
+is free software; you can redistribute it and/or modify it under the
+same terms as Perl itself.
+
+The full text of the license can be found in the LICENSE file included
+with this module.
 
 =cut

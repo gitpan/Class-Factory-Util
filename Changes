@@ -1,3 +1,8 @@
+1.6  2003-08-23
+
+- Scanning for subclasses now looks at @INC, instead of just the
+calling module's directory.  Patch from Iain Truskett.
+
 1.5  2003-07-30
 
 - Fix a mistake in the documentation's SYNOPSIS.  Reported by Jay

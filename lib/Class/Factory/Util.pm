@@ -5,7 +5,7 @@ use vars qw($VERSION);
 
 use Carp qw(confess);
 
-$VERSION = '1.5';
+$VERSION = '1.6';
 
 1;
 
@@ -27,15 +27,35 @@ sub _subclasses
     my $base = shift;
 
     $base =~ s,::,/,g;
-    $base .= '.pm';
 
-    # remove '.pm'
-    my $dir = substr( $INC{$base}, 0, (length $INC{$base}) - 3 );
+    my %dirs = map { $_ => 1 } @INC;
+
+    my $dir = substr( $INC{"$base.pm"}, 0, (length $INC{"$base.pm"}) - 3 );
+
+    $dirs{$dir} = 1;
+
+    my @packages = map { _scandir( "$_/$base" ) } keys %dirs;
+
+    # Make list of unique elements
+    my %packages = map { $_ => 1 } @packages;
+
+    return sort keys %packages;
+}
+
+sub _scandir
+{
+    my $dir = shift;
+
+    return unless -d $dir;
 
     opendir DIR, $dir
 	or confess ("Cannot open directory $dir: $!");
 
-    my @packages = map { substr($_, 0, length($_) - 3) } grep { substr($_, -3) eq '.pm' && -f "$dir/$_" } readdir DIR;
+    my @packages =
+        ( map { substr($_, 0, length($_) - 3) }
+          grep { substr($_, -3) eq '.pm' && -f "$dir/$_" }
+          readdir DIR
+        );
 
     closedir DIR
 	or confess("Cannot close directory $dir: $!" );
@@ -65,9 +85,9 @@ This module exports a method that is useful for factory classes.
 
 When this module is loaded, it creates a method in its caller named
 C<subclasses()>.  This method returns a list of the available
-subclasses for the package.  It does this by looking in the library
-directory containing the caller, and finding any modules in its
-immediate subdirectories.
+subclasses for the package.  It does this by looking in C<@INC> as
+well as the directory containing the caller, and finding any modules
+in the immediate subdirectories of the calling module.
 
 So if you have the modules "Foo::Base", "Foo::Base::Bar", and
 "Foo::Base::Baz", then the return value of C<< Foo::Base->subclasses()

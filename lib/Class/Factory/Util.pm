@@ -5,7 +5,7 @@ use vars qw($VERSION);
 
 use Carp qw(confess);
 
-$VERSION = '1.3';
+$VERSION = '1.4';
 
 1;
 
@@ -18,6 +18,9 @@ sub import
         *{"${caller}::subclasses"} = \&_subclasses;
     }
 }
+
+# deprecated
+sub subclasses { _subclasses(@_) }
 
 sub _subclasses
 {

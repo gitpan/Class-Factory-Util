@@ -1,6 +1,8 @@
-blib/lib/Class/Factory/Util/SubenKlassen.pm
 Changes
 MANIFEST
 Makefile.PL
-Util.pm
-test.pl
+lib/Class/Factory/Util.pm
+t/01test.t
+t/lib/Factory.pm
+t/lib/Factory/Foo.pm
+t/lib/Factory/Bar.pm

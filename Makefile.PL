@@ -1,8 +1,16 @@
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+
 WriteMakefile(
     'NAME'		=> 'Class::Factory::Util',
-    'VERSION_FROM'	=> 'Util.pm', # finds $VERSION
-    'PREREQ_PM'		=> {}, # e.g., Module::Name => 1.1
+    'VERSION_FROM'	=> 'lib/Class/Factory/Util.pm',
 );
+
+package MY;
+
+sub libscan
+{
+    my $self = shift;
+    my $file = shift;
+
+    return $file =~ /svn/ ? 0 : $self->SUPER::libscan($file);
+}

@@ -5,7 +5,7 @@ use vars qw($VERSION);
 
 use Carp qw(confess);
 
-$VERSION = '1.6';
+$VERSION = '1.7';
 
 1;
 
@@ -108,9 +108,9 @@ Removed from Alzabo and packaged by Terrence Brannon,
 
 =head1 COPYRIGHT
 
-Copyright (c) 2003 David Rolsky.  All rights reserved.  This program
-is free software; you can redistribute it and/or modify it under the
-same terms as Perl itself.
+Copyright (c) 2003-2007 David Rolsky.  All rights reserved.  This
+program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
 
 The full text of the license can be found in the LICENSE file included
 with this module.
